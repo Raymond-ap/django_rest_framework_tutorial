@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
+
 class Task(models.Model):
     title = models.CharField(max_length=200)
     completed = models.BooleanField(default=False, blank=True, null=True)
@@ -28,6 +29,4 @@ class Task(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-    title = models.CharField(max_length=200)
         return self.title
-    
