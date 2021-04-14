@@ -51,3 +51,14 @@ def TaskDelete(request, pk):
     task.delete()
     serializer = TaskSerializer()
     return Response('Task deleted')
+
+
+@api_view(['POST'])
+def TaskUpdate(request, pk):
+    task = Task.objects.get(pk=pk)
+    serializer = TaskSerializer(instance=task, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
